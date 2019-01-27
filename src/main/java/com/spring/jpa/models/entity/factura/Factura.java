@@ -3,6 +3,7 @@ package com.spring.jpa.models.entity.factura;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -92,5 +93,14 @@ public class Factura implements Serializable{
 	
 	public void addLineaFactura(LineaFactura item){
 		this.lineaFactura.add(item);
+	}
+	
+	public Double getTotal() {
+		Double total = 0.0;
+		int size = this.lineaFactura.size();
+		for (int i = 0; i < size; i++) {
+			total += this.lineaFactura.get(i).calcularTotal();
+		}
+		return total;
 	}
 }
