@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,6 +52,10 @@ public class Cliente implements Serializable {
 	@OneToMany
 	List<Factura> facturas;
 	
+	/*@PrePersist
+	public void prePersist() {
+		this.creationAt = new Date();
+	}*/
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
 	}
