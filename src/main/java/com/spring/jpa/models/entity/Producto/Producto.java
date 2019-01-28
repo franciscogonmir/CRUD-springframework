@@ -27,6 +27,7 @@ public class Producto implements Serializable{
 	@Column(name="precio")
 	private Double precio;
 	@Temporal(TemporalType.DATE)
+	@Column(name="create_at")
 	private Date createAt;
 	
 	@PrePersist
