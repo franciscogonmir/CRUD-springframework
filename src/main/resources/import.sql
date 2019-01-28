@@ -24,3 +24,9 @@ INSERT INTO clientes(id,nombre,apellido,email,creation_at,foto)VALUES(23,'franci
 INSERT INTO clientes(id,nombre,apellido,email,creation_at,foto)VALUES(24,'vanesa','Sedeño','vanessa@gmail.com','2017-08-28','');
 INSERT INTO clientes(id,nombre,apellido,email,creation_at,foto)VALUES(25,'francisco','Gonzalez','fjgonmir@gmail.com','2017-08-28','');
 INSERT INTO clientes(id,nombre,apellido,email,creation_at,foto)VALUES(26,'vanesa','Sedeño','vanessa@gmail.com','2017-08-28','');
+
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
