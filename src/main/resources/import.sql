@@ -30,3 +30,16 @@ INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25
 INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
 INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
 INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+INSERT INTO Producto(nombre,precio,create_at)VALUES('Panasonic pantalla LCD','25990',now());
+
+INSERT INTO Facturas (descripcion,observacion,cliente_id,create_at) VALUES('Factura equipos de oficina',null,1,now());
+INSERT INTO linea_factura(cantidad,factura_id,producto_id) VALUES(1,1,1);
+INSERT INTO linea_factura(cantidad,factura_id,producto_id) VALUES(2,1,4);
+INSERT INTO linea_factura(cantidad,factura_id,producto_id) VALUES(1,1,5);
+INSERT INTO linea_factura(cantidad,factura_id,producto_id) VALUES(1,1,7);
+INSERT INTO Facturas (descripcion,observacion,cliente_id,create_at) VALUES('Factura bicicleta','Alguna nota importante',1,now());
+INSERT INTO linea_factura(cantidad,factura_id,producto_id) VALUES(1,1,7);

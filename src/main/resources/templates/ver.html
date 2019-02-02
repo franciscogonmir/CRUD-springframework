@@ -18,6 +18,25 @@
 			<li class="list-group-item" th:text="${cliente.email}"></li>
 			<li class="list-group-item" th:text="${cliente.creationAt}"></li>
 			</ul>
+			<div class="alert alert-info mt-3" role="alert" th:if="${#lists.isEmpty(cliente.facturas)}" th:text="'El cliente '+${cliente.nombre}+' '+ ${cliente.apellido}+ ' no tiene ninguna factura actualmmente'"></div>
+			<table th:if="${!#lists.isEmpty(cliente.facturas)}" class="table table-striped mt-3">
+				<thead class="table-primary">
+					<tr>
+						<td>Folio</td>
+						<td>Descripción</td>
+						<td>Fecha</td>			
+						<td>Total</td>															
+					</tr>
+				</thead>
+				<tbody th:each="facturas:${cliente.facturas}">
+					<tr>
+					<td th:text="${facturas.id}"></td>
+					<td th:text="${facturas.descripcion}"></td>
+					<td th:text="${facturas.createAt}"></td>
+					<td th:text="${facturas.total}"></td>
+					</tr>
+				</tbody>
+			</table>
 			</div>
 		</div>
 	</div>

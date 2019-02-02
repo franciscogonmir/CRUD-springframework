@@ -38,11 +38,12 @@ public class Factura implements Serializable{
 	@Column(name="descripcion")
 	private String descripcion;
 	@Temporal(TemporalType.DATE)
+	@Column(name="create_at")
 	private Date createAt;
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private Cliente cliente;
 	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="Linea_factura_id")
+	@JoinColumn(name="factura_id")
 	private List<LineaFactura> lineaFactura;
 	
 	@PrePersist
