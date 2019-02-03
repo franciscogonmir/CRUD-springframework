@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card text-center mt-4">
+			<div class="card-header bg-primary text-white " th:text="${titulo}"></div>
+			<div class="card-body">
+				<div class="container">
+					<form th:action="@{/factura/form}" th:object="${factura}"
+						method="post">
+						<div class="form-row" >
+							<div class="container form-group col-md-6">
+								 	<label th:text="cliente"></label><input type="text"
+									th:value="${factura.cliente.nombre} +' '+ ${factura.cliente.apellido}" class="form-control"
+									aria-describedby="basic-addon1" disabled>
+							</div>
+						</div>
+						<div class="form-row" >
+							<div class="container form-group col-md-6">
+								<label th:text="descripcion"></label> <input type="text"
+									th:field="*{descripcion}" class="form-control"
+									th:placeholder="descripcion"
+									aria-describedby="basic-addon1">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="container form-group col-md-6">
+								<label th:text="observacion"></label>
+								<textarea class="form-control" th:field="*{observacion}"
+									th:placeholder="observacion"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="container col-sm-10">
+								<input type="submit" class="btn btn-primary"
+									th:value="${titulo}">
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<div class="card-footer text-muted bg-primary text-white "></div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>
