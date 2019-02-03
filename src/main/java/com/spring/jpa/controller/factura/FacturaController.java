@@ -1,13 +1,16 @@
 package com.spring.jpa.controller.factura;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.jpa.models.entity.Cliente;
+import com.spring.jpa.models.entity.Producto.Producto;
 import com.spring.jpa.models.entity.factura.Factura;
 import com.spring.jpa.service.ClienteService;
 
@@ -31,5 +34,10 @@ public class FacturaController {
 			model.put("titulo", "Crear Factura");
 		}
 		return "factura/form";
+	}
+	
+	@GetMapping(value="/cargar-productos/{term}",produces="application/json")
+	public @ResponseBody List<Producto> cargarProductos(@PathVariable(value ="term")String term){
+		return clienteSvc.findByName(term);
 	}
 }
