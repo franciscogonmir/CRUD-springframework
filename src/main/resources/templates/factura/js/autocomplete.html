@@ -35,13 +35,15 @@ $(document).ready(function(){
 				$("#listaFactura tbody").append(linea);
 				itemHelper.calcularTotal(ui.item.value,ui.item.precio,1);
 			}
+			itemHelper.calcularGranTotal();
 			return false;
 		}
 	})
 })
 itemHelper = {
 	calcularTotal : function(id,precio,cantidad){
-		$("#importe_"+id).html(precio * cantidad)
+		$("#importe_"+id).html(precio * cantidad);
+		itemHelper.calcularGranTotal();
 	},
 	hasProducto: function(id){
 		var resultado = false;
@@ -58,6 +60,13 @@ itemHelper = {
 	},
 	eliminar: function(id){
 		$("#row"+id).remove();
+	},
+	calcularGranTotal:function(){
+		var contador = 0;
+		$('td[name="importe[]"]').each(function(){
+			contador += parseInt($(this).text());
+		});
+		$('#granTotal').text(contador);
 	}
 }
 </script>
