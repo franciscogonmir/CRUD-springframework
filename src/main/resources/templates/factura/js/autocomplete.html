@@ -25,7 +25,6 @@ $(document).ready(function(){
 			})
 		},
 		select:function(event,ui){
-			//$("#buscarProducto").val(ui.item.label);
 			var linea = $("#itemFactura").html();
 			linea = linea.replace(/{ID}/g,ui.item.value);
 			linea = linea.replace("{NOMBRE}",ui.item.label);
@@ -56,6 +55,9 @@ itemHelper = {
 	increment:function(id,precio){
 		$("#cantidad_"+id).val(parseInt($("#cantidad_"+id).val()) + 1);
 		this.calcularTotal(id,precio,$("#cantidad_"+id).val());
+	},
+	eliminar: function(id){
+		$("#row"+id).remove();
 	}
 }
 </script>

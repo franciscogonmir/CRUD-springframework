@@ -13,6 +13,7 @@
 		<td>{PRECIO}</td>
 		<td><input type="number" id="cantidad_{ID}" name="cantidad[]" value="1" onchange="itemHelper.calcularTotal({ID},{PRECIO},this.value)"></td>
 		<td id="importe_{ID}" name="importe[]">0</td>
+		<td><a href="#" class="btn btn-danger btn-xs" onclick="itemHelper.eliminar({ID})">X</a></td>
 		</tr>
 	</tbody>
 </table>
