@@ -43,6 +43,19 @@
 									th:placeholder="'Busca un Producto'">
 							</div>
 						</div>
+						<table th:replace="factura/pantilla-item-factura :: lineas-factura"></table>
+						<table id="listaFactura" class="table table-sm table-hover">
+						<thead class="thead-light">
+							<tr>
+								<td>Producto</td>
+								<td>Precio</td>
+								<td>Cantidad</td>
+							</tr>
+						</thead>
+						<tbody>
+						
+						</tbody>
+						</table>
 						<div class="form-group row">
 							<div class="container col-sm-10">
 								<input type="submit" class="btn btn-primary"

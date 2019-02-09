@@ -25,7 +25,12 @@ $(document).ready(function(){
 			})
 		},
 		select:function(event,ui){
-			$("#buscarProducto").val(ui.item.label);
+			//$("#buscarProducto").val(ui.item.label);
+			var linea = $("#itemFactura").html();
+			linea = linea.replace("{ID}",ui.item.value);
+			linea = linea.replace("{NOMBRE}",ui.item.label);
+			linea = linea.replace("{PRECIO}",ui.item.precio);
+			$("#listaFactura tbody").append(linea);
 			return false;
 		}
 	})

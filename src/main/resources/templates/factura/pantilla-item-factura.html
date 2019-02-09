@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>plantillas</title>
+</head>
+<body>
+<table th:fragment="lineas-factura" hidden>
+	<tbody id="itemFactura">
+		<tr id="row{ID}">
+		<td hidden><input type="hidden" value="{ID}" name="item_id[]"></td>
+		<td>{NOMBRE}</td>
+		<td>{PRECIO}</td>
+		<td><input type="number" id="cantidad_{ID}" name="cantidad[]" value="1"></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>
