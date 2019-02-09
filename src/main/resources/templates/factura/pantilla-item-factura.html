@@ -11,7 +11,8 @@
 		<td hidden><input type="hidden" value="{ID}" name="item_id[]"></td>
 		<td>{NOMBRE}</td>
 		<td>{PRECIO}</td>
-		<td><input type="number" id="cantidad_{ID}" name="cantidad[]" value="1"></td>
+		<td><input type="number" id="cantidad_{ID}" name="cantidad[]" value="1" onchange="itemHelper.calcularTotal({ID},{PRECIO},this.value)"></td>
+		<td id="importe_{ID}" name="importe[]">0</td>
 		</tr>
 	</tbody>
 </table>

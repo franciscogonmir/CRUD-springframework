@@ -27,14 +27,20 @@ $(document).ready(function(){
 		select:function(event,ui){
 			//$("#buscarProducto").val(ui.item.label);
 			var linea = $("#itemFactura").html();
-			linea = linea.replace("{ID}",ui.item.value);
+			linea = linea.replace(/{ID}/g,ui.item.value);
 			linea = linea.replace("{NOMBRE}",ui.item.label);
-			linea = linea.replace("{PRECIO}",ui.item.precio);
+			linea = linea.replace(/{PRECIO}/g,ui.item.precio);
 			$("#listaFactura tbody").append(linea);
+			itemHelper.calcularTotal(ui.item.value,ui.item.precio,1);
 			return false;
 		}
 	})
 })
+itemHelper = {
+	calcularTotal : function(id,precio,cantidad){
+		$("#importe_"+id).html(precio * cantidad)
+	}
+}
 </script>
 </head>
 <body>
