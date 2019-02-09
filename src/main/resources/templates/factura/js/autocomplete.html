@@ -30,8 +30,12 @@ $(document).ready(function(){
 			linea = linea.replace(/{ID}/g,ui.item.value);
 			linea = linea.replace("{NOMBRE}",ui.item.label);
 			linea = linea.replace(/{PRECIO}/g,ui.item.precio);
-			$("#listaFactura tbody").append(linea);
-			itemHelper.calcularTotal(ui.item.value,ui.item.precio,1);
+			if(itemHelper.hasProducto(ui.item.value)){
+				itemHelper.increment(ui.item.value,ui.item.precio)
+			}else{
+				$("#listaFactura tbody").append(linea);
+				itemHelper.calcularTotal(ui.item.value,ui.item.precio,1);
+			}
 			return false;
 		}
 	})
@@ -39,6 +43,19 @@ $(document).ready(function(){
 itemHelper = {
 	calcularTotal : function(id,precio,cantidad){
 		$("#importe_"+id).html(precio * cantidad)
+	},
+	hasProducto: function(id){
+		var resultado = false;
+		$("input[name='item_id[]']").each(function(){
+			if(this.value == id){
+				resultado = true;
+			}
+		})
+		return resultado;
+	},
+	increment:function(id,precio){
+		$("#cantidad_"+id).val(parseInt($("#cantidad_"+id).val()) + 1);
+		this.calcularTotal(id,precio,$("#cantidad_"+id).val());
 	}
 }
 </script>
