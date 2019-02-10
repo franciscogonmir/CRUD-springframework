@@ -40,7 +40,7 @@ public class Factura implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@Column(name="create_at")
 	private Date createAt;
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Cliente cliente;
 	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="factura_id")

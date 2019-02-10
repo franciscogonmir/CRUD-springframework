@@ -2,20 +2,29 @@ package com.spring.jpa.controller.factura;
 
 import java.util.List;
 import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.jpa.models.entity.Cliente;
 import com.spring.jpa.models.entity.Producto.Producto;
 import com.spring.jpa.models.entity.factura.Factura;
+import com.spring.jpa.models.entity.lineaFactura.LineaFactura;
 import com.spring.jpa.service.ClienteService;
 
 @Controller
 @RequestMapping("/factura")
+@SessionAttributes("factura")
 public class FacturaController {
 
 	@Autowired
@@ -39,5 +48,22 @@ public class FacturaController {
 	@GetMapping(value="/cargar-productos/{term}",produces="application/json")
 	public @ResponseBody List<Producto> cargarProductos(@PathVariable(value ="term")String term){
 		return clienteSvc.findByName(term);
+	}
+	
+	@PostMapping("/form")
+	public String guardarFactura(Factura factura,@RequestParam(name="item_id[]",required=false) Long[] itemId,@RequestParam(name="cantidad[]",required=false) int[] cantidad,RedirectAttributes flash,SessionStatus status) {
+
+		for (int i = 0; i < itemId.length; i++) {
+			Producto p = clienteSvc.findById(itemId[i]);
+			LineaFactura linea = new LineaFactura();
+			linea.setProducto(p);
+			linea.setCantidad(cantidad[i]);
+			factura.addLineaFactura(linea);;
+		}
+		clienteSvc.saveFactura(factura);
+		status.setComplete();
+		flash.addFlashAttribute("success", "Factura creada con exito");
+		return "redirect:/ver/"+factura.getCliente().getId();
+		
 	}
 }

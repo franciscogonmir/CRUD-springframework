@@ -38,6 +38,9 @@ $(document).ready(function(){
 			itemHelper.calcularGranTotal();
 			return false;
 		}
+	});
+	$("form").submit(function(){
+		$("#itemFactura").remove();
 	})
 })
 itemHelper = {

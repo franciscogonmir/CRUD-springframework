@@ -52,7 +52,8 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern="dd-MM-YYYY")
 	@Temporal(TemporalType.DATE)
 	private Date creationAt;
-	@OneToMany(mappedBy="cliente")
+
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	List<Factura> facturas;
 	
 	/*@PrePersist

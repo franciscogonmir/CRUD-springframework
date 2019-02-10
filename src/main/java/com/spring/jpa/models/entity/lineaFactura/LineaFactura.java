@@ -47,4 +47,11 @@ public class LineaFactura implements Serializable {
 	public Double calcularTotal() {
 		return cantidad.doubleValue() + producto.getPrecio();
 	}
+	public Producto getProducto() {
+		return producto;
+	}
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+	
 }

@@ -1,16 +1,17 @@
 package com.spring.jpa.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.spring.jpa.dao.IClienteDao;
+import com.spring.jpa.dao.factura.FacturaDao;
 import com.spring.jpa.dao.producto.ProductoDao;
 import com.spring.jpa.models.entity.Cliente;
 import com.spring.jpa.models.entity.Producto.Producto;
+import com.spring.jpa.models.entity.factura.Factura;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -18,6 +19,8 @@ public class ClienteServiceImpl implements ClienteService {
 	private  IClienteDao clienteDao;
 	@Autowired
 	private ProductoDao productoDao;
+	@Autowired
+	private FacturaDao facturaDao;
 	
 	@Transactional(readOnly=true)
 	public List<Cliente> findAll() {
@@ -42,6 +45,14 @@ public class ClienteServiceImpl implements ClienteService {
 	@Transactional(readOnly = true)
 	public List<Producto> findByName(String term){
 		return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
+	}
+	@Override
+	public void saveFactura(Factura f) {
+		facturaDao.save(f);
+	}
+	@Override
+	public Producto findById(Long id) {
+		return productoDao.findById(id).orElse(null);
 	}
 
 }

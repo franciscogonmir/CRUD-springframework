@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.spring.jpa.models.entity.Cliente;
 import com.spring.jpa.models.entity.Producto.Producto;
+import com.spring.jpa.models.entity.factura.Factura;
 
 public interface ClienteService {
 
@@ -16,4 +17,6 @@ public interface ClienteService {
 	public Cliente findOne(Long id);
 	public void remove(Long id);
 	public List<Producto> findByName(String term);
+	public void saveFactura(Factura f);
+	public Producto findById(Long id);
 }
