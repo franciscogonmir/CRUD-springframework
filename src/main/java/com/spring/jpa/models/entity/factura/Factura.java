@@ -41,8 +41,9 @@ public class Factura implements Serializable{
 	@Column(name="create_at")
 	private Date createAt;
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,orphanRemoval = true)
 	@JoinColumn(name="factura_id")
 	private List<LineaFactura> lineaFactura;
 	

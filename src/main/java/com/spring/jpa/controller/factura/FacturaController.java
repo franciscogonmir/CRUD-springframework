@@ -71,7 +71,7 @@ public class FacturaController {
 	
 	@GetMapping("/verFactura/{id}")
 	public String verFactura(@PathVariable(value="id")Long id,RedirectAttributes flash,Model model) {
-		Factura fact = this.clienteSvc.findFacturaById(id);
+		Factura fact = this.clienteSvc.fetchByIdWithClienteWhithLineaFacturaWithProducto(id);
 		if(fact == null) {
 			flash.addFlashAttribute("error","Factura no encontrada");
 			return "redirect:/listar";

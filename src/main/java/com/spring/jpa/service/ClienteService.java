@@ -21,5 +21,6 @@ public interface ClienteService {
 	public Producto findById(Long id);
 	public Factura findFacturaById(Long id);
 	public void removeFactura(Long id);
-	//public void removeLineaFactura(Long id);
+	public Factura fetchByIdWithClienteWhithLineaFacturaWithProducto(Long id);
+	public Cliente fetchById(Long id);
 }
