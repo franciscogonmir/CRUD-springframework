@@ -28,7 +28,7 @@ public class LineaFactura implements Serializable {
 	private Long id;
 	@Column(name="cantidad")
 	private Integer cantidad;
-	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="producto_id")
 	private Producto producto;
 	

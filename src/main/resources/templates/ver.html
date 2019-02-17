@@ -27,7 +27,8 @@
 						<td>Descripción</td>
 						<td>Fecha</td>			
 						<td>Total</td>		
-						<td>Ver</td>													
+						<td>Ver</td>
+						<td>Eliminar</td>													
 					</tr>
 				</thead>
 				<tbody th:each="facturas:${cliente.facturas}">
@@ -37,6 +38,7 @@
 					<td th:text="${facturas.createAt}"></td>
 					<td th:text="${facturas.total}"></td>
 					<td><a th:href="@{'/factura/verFactura/'+${facturas.id}}" th:text="'detalles'"class="btn btn-primary"></a></td>
+					<td><a th:href="@{'/factura/removeFactura/'+${facturas.id}}" th:text="'Eliminar'"class="btn btn-success"></a></td>
 					</tr>
 				</tbody>
 			</table>

@@ -47,16 +47,25 @@ public class ClienteServiceImpl implements ClienteService {
 		return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
 	}
 	@Override
+	@Transactional
 	public void saveFactura(Factura f) {
 		facturaDao.save(f);
 	}
 	@Override
+	@Transactional(readOnly = true)
 	public Producto findById(Long id) {
 		return productoDao.findById(id).orElse(null);
 	}
 	@Override
+	@Transactional(readOnly = true)
 	public Factura findFacturaById(Long id) {
 		return this.facturaDao.findById(id).orElse(null);
 	}
+	@Override
+	@Transactional
+	public void removeFactura(Long id) {
+		this.facturaDao.deleteById(id);		
+	}
+
 
 }

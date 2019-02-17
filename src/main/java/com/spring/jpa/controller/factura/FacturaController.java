@@ -80,4 +80,12 @@ public class FacturaController {
 		model.addAttribute("titulo", "factura -.".concat(fact.getDescripcion()));
 		return "/factura/ver";
 	}
+	
+	@GetMapping("/removeFactura/{id}")
+	public String removeFactura(@PathVariable(value="id") Long id,RedirectAttributes flash) {
+		Factura factura = this.clienteSvc.findFacturaById(id);
+		this.clienteSvc.removeFactura(id);
+		flash.addFlashAttribute("success", "factura eliminada con éxito");
+		return "redirect:/ver/"+factura.getCliente().getId();
+	}
 }

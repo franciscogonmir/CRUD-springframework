@@ -20,4 +20,6 @@ public interface ClienteService {
 	public void saveFactura(Factura f);
 	public Producto findById(Long id);
 	public Factura findFacturaById(Long id);
+	public void removeFactura(Long id);
+	//public void removeLineaFactura(Long id);
 }
