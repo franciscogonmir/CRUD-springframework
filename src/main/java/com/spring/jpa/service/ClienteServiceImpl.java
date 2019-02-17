@@ -54,5 +54,9 @@ public class ClienteServiceImpl implements ClienteService {
 	public Producto findById(Long id) {
 		return productoDao.findById(id).orElse(null);
 	}
+	@Override
+	public Factura findFacturaById(Long id) {
+		return this.facturaDao.findById(id).orElse(null);
+	}
 
 }

@@ -7,7 +7,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,5 +67,17 @@ public class FacturaController {
 		flash.addFlashAttribute("success", "Factura creada con exito");
 		return "redirect:/ver/"+factura.getCliente().getId();
 		
+	}
+	
+	@GetMapping("/verFactura/{id}")
+	public String verFactura(@PathVariable(value="id")Long id,RedirectAttributes flash,Model model) {
+		Factura fact = this.clienteSvc.findFacturaById(id);
+		if(fact == null) {
+			flash.addFlashAttribute("error","Factura no encontrada");
+			return "redirect:/listar";
+		}
+		model.addAttribute("factura", fact);
+		model.addAttribute("titulo", "factura -.".concat(fact.getDescripcion()));
+		return "/factura/ver";
 	}
 }

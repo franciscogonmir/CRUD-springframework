@@ -19,4 +19,5 @@ public interface ClienteService {
 	public List<Producto> findByName(String term);
 	public void saveFactura(Factura f);
 	public Producto findById(Long id);
+	public Factura findFacturaById(Long id);
 }
