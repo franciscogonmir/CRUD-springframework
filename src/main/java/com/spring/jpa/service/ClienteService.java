@@ -11,7 +11,7 @@ import com.spring.jpa.models.entity.factura.Factura;
 
 public interface ClienteService {
 
-	public Iterable<Cliente> findAll();
+	public List<Cliente> findAll();
 	Page<Cliente> findAll(Pageable pageable);
 	public void save(Cliente cliente);
 	public Cliente findOne(Long id);

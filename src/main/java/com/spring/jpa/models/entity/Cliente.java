@@ -24,6 +24,9 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.jpa.models.entity.factura.Factura;
 
 @Entity
@@ -51,6 +54,7 @@ public class Cliente implements Serializable {
 	@Column(name="creation_at")
 	@DateTimeFormat(pattern="dd-MM-YYYY")
 	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="dd-MM-YYYY HH:mm:ss")
 	private Date creationAt;
 
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -100,6 +104,8 @@ public class Cliente implements Serializable {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	//@JsonIgnore ignora la relacion al componer el json
+	@JsonManagedReference
 	public List<Factura> getFacturas() {
 		return facturas;
 	}

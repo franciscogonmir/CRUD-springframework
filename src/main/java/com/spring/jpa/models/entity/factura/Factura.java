@@ -19,6 +19,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.spring.jpa.models.entity.Cliente;
 import com.spring.jpa.models.entity.lineaFactura.LineaFactura;
 
@@ -78,6 +81,8 @@ public class Factura implements Serializable{
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
+	@XmlTransient
+	@JsonBackReference
 	public Cliente getCliente() {
 		return cliente;
 	}

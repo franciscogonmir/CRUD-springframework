@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head"></head>
 <body>
 	<header th:replace="layout/layout :: header"></header>
@@ -9,7 +9,7 @@
 				<h1
 					class="text-primary border border-secondary border-top-0 border-left-0 border-right-0"
 					th:text="${titulo}"></h1>
-					<p><a th:href="@{'/factura/form/'+${cliente.id}}" class="btn btn-success" th:text="'crear factura'"></a></p>
+					<p sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/factura/form/'+${cliente.id}}" class="btn btn-success" th:text="'crear factura'"></a></p>
 			</div>
 			<div class="card-body">
 			<img th:if="${#strings.length(cliente.foto) > 0}" style="max-width: 25%;"class="img-thumbnail rounded float-left" th:src="@{'/uploads/' + ${cliente.foto}}" th:alt="${cliente.foto}"/>
@@ -27,8 +27,8 @@
 						<td>Descripción</td>
 						<td>Fecha</td>			
 						<td>Total</td>		
-						<td>Ver</td>
-						<td>Eliminar</td>													
+						<td sec:authorize="hasRole('ROLE_ADMIN')">Ver</td>
+						<td sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</td>													
 					</tr>
 				</thead>
 				<tbody th:each="facturas:${cliente.facturas}">
@@ -37,8 +37,8 @@
 					<td th:text="${facturas.descripcion}"></td>
 					<td th:text="${facturas.createAt}"></td>
 					<td th:text="${facturas.total}"></td>
-					<td><a th:href="@{'/factura/verFactura/'+${facturas.id}}" th:text="'detalles'"class="btn btn-primary"></a></td>
-					<td><a th:href="@{'/factura/removeFactura/'+${facturas.id}}" th:text="'Eliminar'"class="btn btn-success"></a></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/factura/verFactura/'+${facturas.id}}" th:text="'detalles'"class="btn btn-primary"></a></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/factura/removeFactura/'+${facturas.id}}" th:text="'Eliminar'"class="btn btn-success"></a></td>
 					</tr>
 				</tbody>
 			</table>

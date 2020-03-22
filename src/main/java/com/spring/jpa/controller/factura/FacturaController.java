@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import com.spring.jpa.models.entity.factura.Factura;
 import com.spring.jpa.models.entity.lineaFactura.LineaFactura;
 import com.spring.jpa.service.ClienteService;
 
+@Secured("ROLE_ADMIN")//a todos los metodos de la clase se le peromitira el acceso a los usuarios con role admin
 @Controller
 @RequestMapping("/factura")
 @SessionAttributes("factura")

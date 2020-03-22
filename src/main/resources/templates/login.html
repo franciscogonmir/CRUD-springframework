@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card">
+			<div class="card-header">Por favor inicia Sesión</div>
+			<div class="card-body">
+				<form th:action="@{/login}" method="post">
+					<div class="form-group col-sm-6">
+						<input type="text" id="username" name="username"
+							class="form-control" placeholder="username" autofocus required>
+					</div>
+					<div class="form-group col-sm-6">
+						<input type="password" class="form-control" id="password"
+							name="password" placeholder="password" required>
+					</div>
+					<div class="form-group col-sm-6">
+						<input type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesión">
+					</div>
+					<!-- es necesario establecer el token de forma manual para que podamos capturar el parametro logout en el controlador -->
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+				</form>
+			</div>
+			<div class="card-footer"></div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
